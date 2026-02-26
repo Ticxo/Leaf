@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ticxo <ticxo.ca@gmail.com>
+Date: Fri, 20 Feb 2026 00:33:03 -0800
+Subject: [PATCH] fixup! leaf File Patches
+
+
+diff --git a/net/minecraft/world/level/block/SoulSandBlock.java b/net/minecraft/world/level/block/SoulSandBlock.java
+index 41384a98011551138ff18e62e17f359d2a4fd903..92d5b46dd79b84202b17b3d3c3f3a2e55ab9dff4 100644
+--- a/net/minecraft/world/level/block/SoulSandBlock.java
++++ b/net/minecraft/world/level/block/SoulSandBlock.java
+@@ -32,7 +32,7 @@ public class SoulSandBlock extends Block {
+ 
+     @Override
+     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+-        return SHAPE;
++        return Shapes.block();
+     }
+ 
+     @Override

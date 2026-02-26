@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ticxo <ticxo.ca@gmail.com>
+Date: Fri, 20 Feb 2026 11:32:47 -0800
+Subject: [PATCH] fixup! leaf File Patches
+
+
+diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+index eb0228d981adf9cc0bd6dd6cc57b9f477da67c77..47d7cc975220c2ca6b0a4f58c2e6495fe5d1e86f 100644
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -4623,6 +4623,8 @@ public abstract class Entity implements SyncedDataHolder, DebugValueSource, Name
+     protected void fixupDimensions() {
+         Pose pose = this.getPose();
+         EntityDimensions dimensions = this.getDimensions(pose);
++        System.out.println("Fix Dim: " + dimensions);
++        Thread.dumpStack();
+         this.dimensions = dimensions;
+         this.eyeHeight = dimensions.eyeHeight();
+         this.leaf$cached_position = null; // Leaf
+@@ -4632,6 +4634,8 @@ public abstract class Entity implements SyncedDataHolder, DebugValueSource, Name
+         EntityDimensions entityDimensions = this.dimensions;
+         Pose pose = this.getPose();
+         EntityDimensions dimensions = this.getDimensions(pose);
++        System.out.println("Fix Dim: " + dimensions);
++        Thread.dumpStack();
+         this.dimensions = dimensions;
+         this.eyeHeight = dimensions.eyeHeight();
+         this.leaf$cached_position = null; // Leaf

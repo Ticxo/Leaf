@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ticxo <ticxo.ca@gmail.com>
+Date: Fri, 20 Feb 2026 13:26:00 -0800
+Subject: [PATCH] fixup! leaf File Patches
+
+
+diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+index 47d7cc975220c2ca6b0a4f58c2e6495fe5d1e86f..c6eaf71165276a59f9f2dc93922964c309999aec 100644
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -337,6 +337,7 @@ public abstract class Entity implements SyncedDataHolder, DebugValueSource, Name
+     private long pistonDeltasGameTime;
+     protected EntityDimensions dimensions;
+     private float eyeHeight;
++    public boolean dimensionsLocked;
+     public boolean isInPowderSnow;
+     public boolean wasInPowderSnow;
+     public Optional<BlockPos> mainSupportingBlockPos = Optional.empty();
+@@ -4621,21 +4622,21 @@ public abstract class Entity implements SyncedDataHolder, DebugValueSource, Name
+ 
+     @Deprecated
+     protected void fixupDimensions() {
++        if(dimensionsLocked)
++            return;
+         Pose pose = this.getPose();
+         EntityDimensions dimensions = this.getDimensions(pose);
+-        System.out.println("Fix Dim: " + dimensions);
+-        Thread.dumpStack();
+         this.dimensions = dimensions;
+         this.eyeHeight = dimensions.eyeHeight();
+         this.leaf$cached_position = null; // Leaf
+     }
+ 
+     public void refreshDimensions() {
++        if(dimensionsLocked)
++            return;
+         EntityDimensions entityDimensions = this.dimensions;
+         Pose pose = this.getPose();
+         EntityDimensions dimensions = this.getDimensions(pose);
+-        System.out.println("Fix Dim: " + dimensions);
+-        Thread.dumpStack();
+         this.dimensions = dimensions;
+         this.eyeHeight = dimensions.eyeHeight();
+         this.leaf$cached_position = null; // Leaf

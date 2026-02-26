@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ticxo <ticxo.ca@gmail.com>
+Date: Fri, 20 Feb 2026 00:31:22 -0800
+Subject: [PATCH] Voxel shape getter
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftVoxelShape.java b/src/main/java/org/bukkit/craftbukkit/util/CraftVoxelShape.java
+index 0e5625cad2a4a546a2aa3675a9d2fe1068a6ff01..765da15a4b4c3b161c1d413e189918783eeaeeae 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/CraftVoxelShape.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/CraftVoxelShape.java
+@@ -38,4 +38,8 @@ public final class CraftVoxelShape implements org.bukkit.util.VoxelShape {
+ 
+         return false;
+     }
++
++    public VoxelShape getShape() {
++        return shape;
++    }
+ }

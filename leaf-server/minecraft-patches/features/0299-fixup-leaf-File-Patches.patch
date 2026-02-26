@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ticxo <ticxo.ca@gmail.com>
+Date: Fri, 20 Feb 2026 00:40:17 -0800
+Subject: [PATCH] fixup! leaf File Patches
+
+
+diff --git a/net/minecraft/world/level/block/SoulSandBlock.java b/net/minecraft/world/level/block/SoulSandBlock.java
+index 92d5b46dd79b84202b17b3d3c3f3a2e55ab9dff4..0962c54e66379822abca6e22374fdc7ef817c5b7 100644
+--- a/net/minecraft/world/level/block/SoulSandBlock.java
++++ b/net/minecraft/world/level/block/SoulSandBlock.java
+@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
+ import net.minecraft.core.Direction;
+ import net.minecraft.server.level.ServerLevel;
+ import net.minecraft.util.RandomSource;
++import net.minecraft.world.entity.player.Player;
+ import net.minecraft.world.level.BlockGetter;
+ import net.minecraft.world.level.Level;
+ import net.minecraft.world.level.LevelReader;
+@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
+ import net.minecraft.world.level.block.state.BlockState;
+ import net.minecraft.world.level.pathfinder.PathComputationType;
+ import net.minecraft.world.phys.shapes.CollisionContext;
++import net.minecraft.world.phys.shapes.EntityCollisionContext;
+ import net.minecraft.world.phys.shapes.Shapes;
+ import net.minecraft.world.phys.shapes.VoxelShape;
+ 
+@@ -32,7 +34,7 @@ public class SoulSandBlock extends Block {
+ 
+     @Override
+     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+-        return Shapes.block();
++        return context instanceof EntityCollisionContext ctx && ctx.getEntity() instanceof Player ? SHAPE : Shapes.block();
+     }
+ 
+     @Override
