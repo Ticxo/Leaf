@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ticxo <ticxo.ca@gmail.com>
+Date: Fri, 27 Feb 2026 00:13:31 -0800
+Subject: [PATCH] fixup! leaf File Patches
+
+
+diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+index c6eaf71165276a59f9f2dc93922964c309999aec..e4664d804e43ee49065bfa0790002249d2d9eaf2 100644
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -3360,7 +3360,7 @@ public abstract class Entity implements SyncedDataHolder, DebugValueSource, Name
+     }
+ 
+     public boolean canBeCollidedWith(@Nullable Entity entity) {
+-        return hardCollisionStatus == EntityCollision.COLLIDE;
++        return isAlive() && hardCollisionStatus == EntityCollision.COLLIDE;
+     }
+ 
+     public void rideTick() {
